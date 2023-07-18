@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!--=============== FAVICON ===============-->
+      <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+
+      <!--=============== REMIXICONS ===============-->
+      <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+
+      <!--=============== CSS ===============-->
+      <link rel="stylesheet" href="css/styles.css">
+
+      <title>PortFolio</title>
+</head>
+<body>
+     <!--==================== Pop UP Detail ====================-->
+     <div class="popup-overlay" id="popup">
+        <div class="popup-content">
+          <h3 class="home__subtitle" style="margin-bottom: 3rem; font-size: 2rem; font-weight: bold;">Please <span>Tell Me</span></h3>
+          <form class="contact__form" id="popup-form" method="POST" action="/popsubmit">
+           <div class="contact__group">
+              <input type="text" name="popup_name" placeholder="Enter Your Name" required class="contact__input">
+              <input type="email" name="popup_email" placeholder="Enter Your Email" required class="contact__input">
+           </div>
+           <button type="submit" class="button contact__button" id="submit" onclick="closePopup()">
+              Submit
+           </button>
+        </form>
+        </div>
+      </div>
+
+      <!--=============== SCROLLREVEAL ===============-->
+      <script src="js/scrollreveal.min.js"></script>
+
+      <!--=============== EMAIL JS ===============-->
+      <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+      <!--=============== MAIN JS ===============-->
+      <script src="js/main.js"></script>
+</body>
+</html>

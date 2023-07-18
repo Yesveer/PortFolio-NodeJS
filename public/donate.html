@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!--=============== FAVICON ===============-->
+      <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+
+      <!--=============== REMIXICONS ===============-->
+      <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+
+      <!--=============== RazorPay Payment opetion ===============-->
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+      <!--=============== CSS ===============-->
+      <link rel="stylesheet" href="css/styles.css">
+
+      <title>PortFolio</title>
+</head>
+<body>
+     <!--==================== Pop UP Detail ====================-->
+     <div class="popup-overlay" id="popup">
+        <div class="popup-content">
+          <h3 class="home__subtitle" style="margin-bottom: 3rem; font-size: 2rem; font-weight: bold;">Please <span>Donate Me</span></h3>
+     <form id="payment-form" class="contact__form" method="POST" action="/payment">
+        <div class="contact__group">
+            <input type="text" name="popup_name" id="name" placeholder="Enter Your Name" required class="contact__input">
+            <input type="email" name="popup_email" id="email" placeholder="Enter Your Email" required class="contact__input">
+            <input type="number" name="popup_contact" id="contact" placeholder="Enter Your Contact Number" required class="contact__input">
+            <input type="number" name="popup_money" id="amount" placeholder="Enter Your Amount" required class="contact__input">
+    </div>
+        <button type="submit" class="button contact__button">Pay Now</button>
+      </form>
+      </div>
+      </div>
+      
+
+
+<!--=============== Payment Model ===============-->
+      <script>
+        // Fetch the form and add an event listener for form submission
+var form = document.getElementById('payment-form');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // Fetch the required values from the form
+  var amount = document.getElementById('amount').value;
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('email').value;
+  var contact = document.getElementById('contact').value;
+
+  // Create the payment options
+  var options = {
+    key: 'rzp_test_yox2947He9fpRB',
+    amount: amount * 100,
+    name: 'Kaal Bhairav',
+    description: 'Donate Me For Research & Development of our Country',
+    image: 'https://media.licdn.com/dms/image/D4D03AQGB-dqnfFtskA/profile-displayphoto-shrink_400_400/0/1665421284181?e=1695254400&v=beta&t=m9oU-RTyyBfesnWYkokuyGeLG3szJJHP37spPQ-vR2E',
+    handler: function(response) {
+      // Handle the payment success
+      alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
+      window.location.replace('/main.html');
+    },
+    prefill: {
+      name: name,
+      email: email,
+      contact: contact
+    }
+  };
+
+  // Create the Razorpay payment object and open the payment form
+  var rzp = new Razorpay(options);
+  rzp.open();
+});
+
+      </script>
+      <!--=============== SCROLLREVEAL ===============-->
+      <script src="js/scrollreveal.min.js"></script>
+
+      <!--=============== EMAIL JS ===============-->
+      <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+      <!--=============== MAIN JS ===============-->
+      <script src="js/main.js"></script>
+</body>
+</html>
